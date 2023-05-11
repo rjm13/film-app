@@ -1,8 +1,8 @@
 //contains all of the stlying for the drawer
 
 import React, { useEffect, useState, useContext } from 'react';
-import { View, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native';
-import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
+import { View, StyleSheet, Text, TouchableWithoutFeedback, Image } from 'react-native';
+import { DrawerContentScrollView, DrawerItem, } from '@react-navigation/drawer';
 
 import useStyles from '../styles';
 import { useDrawerStatus } from '@react-navigation/drawer'
@@ -11,6 +11,8 @@ import { useDrawerStatus } from '@react-navigation/drawer'
 // import { API, graphqlOperation, Auth } from "aws-amplify";
 
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 import { AppContext } from '../AppContext';
 
@@ -38,25 +40,37 @@ export function DrawerContent({navigation} : any) {
     }, [status])
 
     return(
-        <View style={{ flex:1 , backgroundColor: theme === true ? '#000' : '#fff'}}>
+        <View style={{ flex:1 , backgroundColor: theme === true ? '#fff' : '#000'}}>
             <DrawerContentScrollView>
-                <View style={{flexDirection: 'row', alignItems: 'center', marginHorizontal: 20, marginTop: 40}}>
-                    <Text style={[styles.title, {textTransform: 'capitalize', color: theme === true ? '#fff' : 'maroon'}]}>
-                        {userFirstName + ' ' + userLastName + ','} 
+                <View style={{height: 80}}/>
+                <View style={{flexDirection: 'row', alignItems: 'center', marginHorizontal: 20}}>
+                <Image
+                        style={{marginRight: 10, alignSelf: 'center', height: 50, width: 50, borderRadius: 25, overflow: 'hidden'}}
+                        source={{
+                        uri: 'https://reactnative.dev/img/tiny_logo.png',
+                        }}
+                    />
+                    <Text style={[styles.header, {textTransform: 'capitalize', color: theme === true ? '#000' : '#fff'}]}>
+                        {userFirstName + ' ' + userLastName} 
                     </Text>
-                    <Text style={[styles.title, {textTransform: 'uppercase', color: theme === true ? '#fff' : 'maroon'}]}>
-                        {' ' + 'RN'}
+                    <Text style={[styles.header, {textTransform: 'uppercase', color: theme === true ? '#000' : '#fff'}]}>
+                       
                     </Text>
                 </View>
 
-                <View style={{backgroundColor: theme === true ? '#fff' : 'maroon', height: 3, marginTop: 10, marginHorizontal: 20}}/>
+                <View style={{backgroundColor: theme === true ? '#000' : '#fff', height: 1, marginTop: 10, marginHorizontal: 20}}/>
 
-                <View style={{marginTop: 30}}>
+                <View style={{marginTop: 10}}>
                     <TouchableWithoutFeedback onPress={() => navigation.navigate('MyShifts')}>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
                                 <View style={istyles.box}>
+                                    <FontAwesome5 
+                                        name='home'
+                                        color='gray'
+                                        size={20}
+                                    />
                                     <Text style={styles.itemtext}>
-                                        Upcoming Shifts
+                                        Home
                                     </Text>
                                 </View>
                             </View>
@@ -65,8 +79,43 @@ export function DrawerContent({navigation} : any) {
                         <TouchableWithoutFeedback onPress={() => navigation.navigate('PostedShifts')}>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
                                 <View style={istyles.box}>
+                                    <FontAwesome 
+                                        name='calendar'
+                                        color='gray'
+                                        size={20}
+                                    />
                                     <Text style={[styles.itemtext]}>
-                                        My Trades
+                                        Schedule
+                                    </Text>
+                                </View>
+                            </View>
+                        </TouchableWithoutFeedback>
+
+                        <TouchableWithoutFeedback onPress={() => navigation.navigate('PostedShifts')}>
+                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
+                                <View style={istyles.box}>
+                                    <FontAwesome 
+                                        name='ticket'
+                                        color='gray'
+                                        size={20}
+                                    />
+                                    <Text style={[styles.itemtext]}>
+                                        Tickets
+                                    </Text>
+                                </View>
+                            </View>
+                        </TouchableWithoutFeedback>
+
+                        <TouchableWithoutFeedback onPress={() => navigation.navigate('PostedShifts')}>
+                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
+                                <View style={istyles.box}>
+                                    <FontAwesome 
+                                        name='ticket'
+                                        color='gray'
+                                        size={20}
+                                    />
+                                    <Text style={[styles.itemtext]}>
+                                        Event Info
                                     </Text>
                                 </View>
                             </View>
@@ -75,8 +124,13 @@ export function DrawerContent({navigation} : any) {
                         <TouchableWithoutFeedback onPress={() => navigation.navigate('CreateTrade')}>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
                                 <View style={istyles.box}>
+                                    <FontAwesome5 
+                                        name='film'
+                                        color='gray'
+                                        size={20}
+                                    />
                                     <Text style={[styles.itemtext]}>
-                                       Post Shift 
+                                    Films
                                     </Text>
                                 </View>
                             </View>
@@ -85,105 +139,177 @@ export function DrawerContent({navigation} : any) {
                         <TouchableWithoutFeedback onPress={() => navigation.navigate('TradeApprovalRequests', {trigger: Math.random()})}>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
                                 <View style={istyles.box}>
+                                    <FontAwesome5 
+                                        name='trophy'
+                                        color='gray'
+                                        size={20}
+                                    />
                                     <Text style={[styles.itemtext]}>
-                                        Pickup Responses
+                                        Awards
                                     </Text>
                                 </View>
                             </View>
                         </TouchableWithoutFeedback>
 
-                        {manager === true ? (
-                            <View>
-
-                            <View style={{backgroundColor: 'lightgray', height: 1, marginVertical: 10}}/>
-
-                            <TouchableWithoutFeedback onPress={() => navigation.navigate('CreateShift')}>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
-                                    <View style={istyles.box}>
-                                        <Text style={styles.itemtext}>
-                                            Create Open Shift 
-                                        </Text>
-                                    </View>
+                        <TouchableWithoutFeedback onPress={() => navigation.navigate('TradeApprovalRequests', {trigger: Math.random()})}>
+                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
+                                <View style={istyles.box}>
+                                    <Entypo 
+                                        name='network'
+                                        color='gray'
+                                        size={20}
+                                    />
+                                    <Text style={[styles.itemtext]}>
+                                        Networking
+                                    </Text>
                                 </View>
-                            </TouchableWithoutFeedback>
+                            </View>
+                        </TouchableWithoutFeedback>
 
-                            <TouchableWithoutFeedback onPress={() => navigation.navigate('ApprovalRequests', {trigger: Math.random()})}>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
-                                    <View style={istyles.box}>
-                                        <Text style={styles.itemtext}>
-                                            Approval Requests
-                                        </Text>
-                                    </View>
-                                    {hasPending === true ? (
-                                    <FontAwesome5 name='exclamation-circle' color='maroon' size={20} />
-                                    ) : null}
-                                </View>
-                            </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={() => navigation.navigate('TradeApprovalRequests', {trigger: Math.random()})}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
+                        <View style={istyles.box}>
+                            <FontAwesome 
+                                name='info-circle'
+                                color='gray'
+                                size={20}
+                            />
+                            <Text style={[styles.itemtext]}>
+                                About
+                            </Text>
+                        </View>
+                    </View>
+                </TouchableWithoutFeedback>
 
-                            <TouchableWithoutFeedback onPress={() => navigation.navigate('FilledShifts', {trigger: Math.random()})}>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
-                                    <View style={istyles.box}>
-                                        <Text style={styles.itemtext}>
-                                            Filled Shifts
-                                        </Text>
-                                    </View>
-                                </View>
-                            </TouchableWithoutFeedback>
-                    
+            <TouchableWithoutFeedback onPress={() => navigation.navigate('TradeApprovalRequests', {trigger: Math.random()})}>
+                    <View style={{}}>
+                        <View style={istyles.box}>
+                            <FontAwesome 
+                                name='money'
+                                color='gray'
+                                size={20}
+                            />
+                            <Text style={[styles.itemtext]}>
+                                Sponsors
+                            </Text>
+                        </View>
+                    </View>
+                </TouchableWithoutFeedback>
+               
+                <TouchableWithoutFeedback onPress={() => navigation.navigate('TradeApprovalRequests', {trigger: Math.random()})}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
+                        <View style={istyles.box}>
+                            <FontAwesome5 
+                                name='hand-holding-heart'
+                                color='gray'
+                                size={20}
+                            />
+                            <Text style={[styles.itemtext]}>
+                                Support
+                            </Text>
+                        </View>
+                    </View>
+                </TouchableWithoutFeedback>
 
-                            <TouchableWithoutFeedback onPress={() => navigation.navigate('CreateAnnouncement')}>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
-                                    <View style={istyles.box}>
-                                        <Text style={[styles.itemtext]}>
-                                            Create Announcement
-                                        </Text>
-                                    </View>
-                                </View>
-                            </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={() => navigation.navigate('Settings')}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
+                        <View style={istyles.box}>
+                            <FontAwesome 
+                                name='gear'
+                                color='gray'
+                                size={20}
+                            />
+                            <Text style={[styles.itemtext]}>
+                                Settings
+                            </Text>
+                        </View>
+                    </View>
+                </TouchableWithoutFeedback>
 
-                            <TouchableWithoutFeedback onPress={() => navigation.navigate('Training')}>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
-                                    <View style={istyles.box}>
-                                        <Text style={[styles.itemtext]}>
-                                            Manage Training
-                                        </Text>
-                                    </View>
-                                </View>
-                            </TouchableWithoutFeedback>
+                <View style={{height: 20}}/>
+            
 
-                            </View>  
-                        ) : null}
                         
                 </View>
             </DrawerContentScrollView>
 
 
-            {/* <Drawer.Section style={styles.bottomDrawerSection}>
-                {CurrentCard !== null ? (
-                    <DrawerItem
-                        icon={({ color, size }) => (
-                            <Feather
-                                name='book'
-                                color={color}
-                                size={size}
+            {/* <View style={istyles.bottomDrawerSection}>
+
+            <TouchableWithoutFeedback onPress={() => navigation.navigate('TradeApprovalRequests', {trigger: Math.random()})}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
+                        <View style={istyles.box}>
+                            <FontAwesome 
+                                name='info-circle'
+                                color='gray'
+                                size={20}
                             />
-                        )}
-                            label='Current Game'
-                            labelStyle={ styles.itemText}
-                            onPress={() => navigation.navigate('Scorecard')}
-                    />
-                ) : null}
-            </Drawer.Section> */}
+                            <Text style={[styles.itemtext]}>
+                                About
+                            </Text>
+                        </View>
+                    </View>
+                </TouchableWithoutFeedback>
+
+            <TouchableWithoutFeedback onPress={() => navigation.navigate('TradeApprovalRequests', {trigger: Math.random()})}>
+                    <View style={{}}>
+                        <View style={istyles.box}>
+                            <FontAwesome 
+                                name='money'
+                                color='gray'
+                                size={20}
+                            />
+                            <Text style={[styles.itemtext]}>
+                                Sponsors
+                            </Text>
+                        </View>
+                    </View>
+                </TouchableWithoutFeedback>
+               
+                <TouchableWithoutFeedback onPress={() => navigation.navigate('TradeApprovalRequests', {trigger: Math.random()})}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
+                        <View style={istyles.box}>
+                            <FontAwesome5 
+                                name='hand-holding-heart'
+                                color='gray'
+                                size={20}
+                            />
+                            <Text style={[styles.itemtext]}>
+                                Support
+                            </Text>
+                        </View>
+                    </View>
+                </TouchableWithoutFeedback>
+
+                <TouchableWithoutFeedback onPress={() => navigation.navigate('TradeApprovalRequests', {trigger: Math.random()})}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
+                        <View style={istyles.box}>
+                            <FontAwesome 
+                                name='gear'
+                                color='gray'
+                                size={20}
+                            />
+                            <Text style={[styles.itemtext]}>
+                                Settings
+                            </Text>
+                        </View>
+                    </View>
+                </TouchableWithoutFeedback>
+
+                <View style={{height: 20}}/>
+            </View> */}
         </View>
     )
 }
 
 const istyles = StyleSheet.create({
     box: {
+        width: 200, 
         paddingVertical: 14, 
         paddingHorizontal: 20, 
         flexDirection: 'row', 
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'space-between'
     },
     expandedbox: {
         paddingVertical: 12, 

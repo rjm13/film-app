@@ -3,6 +3,9 @@ import {
     View, 
     Text, 
     Dimensions,
+    ImageBackground,
+    Modal,
+    TouchableWithoutFeedback
 } from 'react-native';
 
 import {AppContext} from '../AppContext';
@@ -25,9 +28,25 @@ const Home = ({navigation} : any) => {
         messageType: '',
     })
 
+    const [modalVisible, setModalVisible] = useState(false);
+
     return (
         <View style={styles.container}>
-
+            <View style={{height: 100}} />
+            <ImageBackground source={{uri: 'https://wallpaperaccess.com/full/199948.jpg'}} style={{width: Dimensions.get('window').width, height: 240, marginTop: -10}} imageStyle={{}}>
+                <View style={{alignItems: 'center', justifyContent: 'center', height: '100%', width: '100%', backgroundColor: '#64BE50a5'}}>
+                       <Text style={{    
+                        color: 'white',
+                        fontSize: 42,
+                        lineHeight: 84,
+                        fontWeight: 'bold',
+                        textAlign: 'center',
+                        //backgroundColor: '#000000c0',
+                        }}>
+                        WELCOME
+                    </Text> 
+            </View>                        
+            </ImageBackground>
         </View>
     )
 }

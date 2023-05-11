@@ -8,7 +8,7 @@
     "userInterfaceStyle": "light",
     "scheme": "filmapp",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/CIFF_Splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

@@ -31,25 +31,26 @@ return StyleSheet.create ({
       },
       infotext: {
         fontSize: 14,
-        color: theme === true ? '#ffffffa5' : '#000000a5',
+        color: theme === false ? '#ffffffa5' : '#000000a5',
       },
     paragraph: {
       fontSize: 14,
-      color: theme === true ? '#fff' : '#000',
+      color: theme === false ? '#fff' : '#000',
     },
     subtext: {
       fontSize: 12,
       fontWeight: '600',
-      color: theme === true ? '#ffffffa5' : '#000000a5',
+      color: theme === false ? '#ffffffa5' : '#000000a5',
     },
     itemtext: {
-      marginLeft: 30,
       fontSize: 16,
       fontWeight: '400',
-      color: theme === true ? '#fff' : '#000',
+      color: theme === false ? '#fff' : '#000',
+      textAlign: 'left',
+      width: 100
     },
     textInputTitle: {
-      color: theme === true ? '#000' : '#fff',
+      color: theme === false ? '#000' : '#fff',
       fontWeight: 'normal',
     },
     inputfield: {
@@ -62,7 +63,7 @@ return StyleSheet.create ({
         overflow: 'hidden',
     },
     inputtitle: {
-      color: theme === true ? '#fff' : '#000',
+      color: theme === false ? '#fff' : '#000',
       fontSize: 18,
       fontWeight: '600'
     },
