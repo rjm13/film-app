@@ -23,6 +23,8 @@ export type RootStackParamList = {
   ForgotPassword: undefined;
   Redirect: undefined;
   Welcome: undefined;
+  Settings: undefined;
+  About: undefined;
  
 };
 

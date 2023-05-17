@@ -78,7 +78,7 @@ export function DrawerContent({navigation} : any) {
                             </View>
                         </TouchableWithoutFeedback>
 
-                        <TouchableWithoutFeedback onPress={() => navigation.navigate('TradeApprovalRequests', {trigger: Math.random()})}>
+                        <TouchableWithoutFeedback onPress={() => navigation.navigate('About')}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
                             <View style={istyles.box}>
                                 <FontAwesome 

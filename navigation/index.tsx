@@ -19,6 +19,7 @@ import Home from '../screens/Home';
 // import Welcome from '../screens/Auth/Welcome';
 // import ForgotPassword from '../screens/Auth/ForgotPassword';
 import Settings from '../screens/Settings';
+import About from '../screens/About';
 
 
 import { AppContext } from '../AppContext';
@@ -131,6 +132,7 @@ function RootNavigator({navigation} : any) {
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }}/>
       <Stack.Screen name="Redirect" component={Redirect} options={{ headerShown: false }}/>
       <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }}/> */}
+      <Stack.Screen name="About" component={About} options={{ headerShown: false }} />
       <Stack.Screen name="Settings" component={Settings} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
