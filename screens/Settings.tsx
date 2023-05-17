@@ -8,16 +8,15 @@ import { View,
         TouchableWithoutFeedback, 
         TouchableOpacity, 
         ActivityIndicator,
-        Modal
+        Modal,
+        Image
     } from 'react-native';
 
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {StatusBar} from 'expo-status-bar';
-//import { Modal, Portal, Provider } from 'react-native-paper';
 
 import {AppContext} from '../AppContext';
 import useStyles from '../styles';
-import Header from '../components/Header';
 
 // import { API, graphqlOperation, Auth, Storage } from "aws-amplify";
 // import { updateUser } from '../src/graphql/mutations';
@@ -39,28 +38,28 @@ const Settings = ({navigation} : any) => {
     const [is24SwitchOn, setIs24SwitchOn] = useState<boolean>(militaryTime);
 
 
-    // const onToggleSwitch = async () => {
+    const onToggleSwitch = async () => {
 
-    //     if (theme === true) {
-    //         setIsSwitchOn(false);
-    //         setTheme(false);
-    //         await API.graphql(
-    //             graphqlOperation(
-    //                 updateUser, {input: {
-    //                     id: userID,
-    //                     Setting1: false,
-    //         }}))
-    //     } else {
-    //         setIsSwitchOn(true);
-    //         setTheme(true);
-    //         await API.graphql(
-    //             graphqlOperation(
-    //                 updateUser, {input: {
-    //                     id: userID,
-    //                     Setting1: true,
-    //         }}))
-    //     }
-    // }  
+        if (theme === true) {
+            setIsSwitchOn(false);
+            setTheme(false);
+            // await API.graphql(
+            //     graphqlOperation(
+            //         updateUser, {input: {
+            //             id: userID,
+            //             Setting1: false,
+            // }}))
+        } else {
+            setIsSwitchOn(true);
+            setTheme(true);
+            // await API.graphql(
+            //     graphqlOperation(
+            //         updateUser, {input: {
+            //             id: userID,
+            //             Setting1: true,
+            // }}))
+        }
+    }  
 
     // const onToggle24Switch = async () => {
 
@@ -144,52 +143,73 @@ const Settings = ({navigation} : any) => {
             onRequestClose={() => {
             setModalVisible(!modalVisible);
         }}>
-            <View style={{justifyContent: 'center', alignItems: 'center', height: Dimensions.get('window').height, width: Dimensions.get('window').width}}>
-            <View style={{backgroundColor: '#363636'}}>
-                <View style={{ alignItems: 'center'}}>
-                        <Text style={[styles.settingsitem, {paddingVertical: 16}]}>
-                            Are you sure you want to log out?
-                        </Text>
-                        <View style={{}}>
-                            {signingout ? (
-                                <ActivityIndicator size="small" color="maroon"/>
-                            ) : (
-                               <TouchableOpacity 
-                               //onPress={SignOut}
-                               >
-                                    <View style={styles.buttonlayout} >
-                                        <Text style={styles.buttontext}>Log Out</Text> 
-                                    </View>
-                                </TouchableOpacity> 
-                            )}
+            <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
+                <View style={{justifyContent: 'center', alignItems: 'center', height: Dimensions.get('window').height, width: Dimensions.get('window').width}}>
+                <View style={{backgroundColor: '#fff', padding: 40, borderRadius: 10, overflow: 'hidden'}}>
+                    <View style={{ alignItems: 'center'}}>
+                            <Text style={[styles.paragraph, {paddingVertical: 20}]}>
+                                Are you sure you want to log out?
+                            </Text>
+                            <View style={{}}>
+                                {signingout ? (
+                                    <ActivityIndicator size="small" color="maroon"/>
+                                ) : (
+                                <TouchableOpacity 
+                                //onPress={SignOut}
+                                >
+                                        <View style={styles.buttonlayout} >
+                                            <Text style={styles.buttontext}>Log Out</Text> 
+                                        </View>
+                                    </TouchableOpacity> 
+                                )}
+                            </View>
                         </View>
-                    </View>
-            </View>
-            </View>
+                </View>
+                </View>
+            </TouchableWithoutFeedback>
         </Modal>
-
-        {/* <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-                <View style={{ alignItems: 'center'}}>
-                        <Text style={[styles.settingsitem, {paddingVertical: 16}]}>
-                            Are you sure you want to log out?
-                        </Text>
-                        <View style={{}}>
-                            {signingout ? (
-                                <ActivityIndicator size="small" color="maroon"/>
-                            ) : (
-                            //    <TouchableOpacity onPress={SignOut}>
-                            //         <View style={styles.buttonlayout} >
-                            //             <Text style={styles.buttontext}>Log Out</Text> 
-                            //         </View>
-                            //     </TouchableOpacity> 
-                            )}
-                        </View>
-                    </View>
-                </Modal> */}
-
-
-            <Header header={'Settings'}/>
+            
         <ScrollView>
+                
+            <View style={{height: 100}}/>
+
+            <Image
+                style={{alignSelf: 'center', marginVertical: 40, height: 100, width: 100, borderRadius: 50, resizeMode: 'contain', overflow: 'hidden'}}
+                source={{
+                uri: 'https://reactnative.dev/img/tiny_logo.png',
+                }}
+            />
+
+            <View >
+                <View style={styles.optionsitem}>
+                    <View style={[istyles.subblock, {width: '100%', flexDirection: 'row', justifyContent: 'space-between'}]}>
+                            <Text style={styles.subparagraph}>
+                                Name
+                            </Text>
+                            <Text style={[styles.infotext, {textTransform: 'capitalize'}]}>
+                                Randy Myers
+                            </Text>
+                    </View>
+                </View>
+            </View>
+
+            <View >
+                <View style={styles.optionsitem}>
+                    <View style={[istyles.subblock, {width: '100%', flexDirection: 'row', justifyContent: 'space-between'}]}>
+                            <Text style={styles.subparagraph}>
+                                Location
+                            </Text>
+                            <Text style={[styles.infotext, {}]}>
+                                Houston, TX
+                            </Text>
+                    </View>
+                </View>
+            </View>
+
+            
+
+            <View style={styles.linebreak}/>
+
 
             <View style={{ marginHorizontal: 20, marginVertical: 20}}>
                 <Text style={styles.paragraph}>
@@ -200,115 +220,22 @@ const Settings = ({navigation} : any) => {
             <View>
                 <View style={styles.optionsitem}>
                     <View style={istyles.subblock}>
-                        <Text style={styles.settingsitem}>
-                            Dark Mode
+                        <Text style={styles.subparagraph}>
+                            Light Mode
                         </Text>
                     </View>
                     
                     <Switch
-                        trackColor={{ false: 'gray', true: '#800000a5' }}
-                        thumbColor={isSwitchOn === true ? 'maroon' : isSwitchOn === false ? "#474747" : "#474747"}
-                        ios_backgroundColor="maroon"
-                        //onValueChange={onToggleSwitch}
+                        trackColor={{ false: 'gray', true: '#64BE50' }}
+                        thumbColor={isSwitchOn === true ? '#187D46' : isSwitchOn === false ? "#474747" : "#474747"}
+                        ios_backgroundColor="#187D46"
+                        onValueChange={onToggleSwitch}
                         value={isSwitchOn}
                     />
                 </View>
             </View>
 
-            <View>
-                <View style={styles.optionsitem}>
-                    <View style={istyles.subblock}>
-                        <Text style={styles.settingsitem}>
-                            24-hour Time
-                        </Text>
-                    </View>
-                    
-                    <Switch
-                        trackColor={{ false: 'gray', true: '#800000a5' }}
-                        thumbColor={is24SwitchOn === true ? 'maroon' : is24SwitchOn === false ? "#474747" : "#474747"}
-                        ios_backgroundColor="maroon"
-                        //onValueChange={onToggle24Switch}
-                        value={is24SwitchOn}
-                    />
-                </View>
-            </View>
-
-            <View style={{alignSelf: 'center', backgroundColor: 'black', height: 1, width: Dimensions.get('window').width - 80}}/>
-            
-            <View style={{ marginHorizontal: 20, marginVertical: 20}}>
-                <Text style={styles.paragraph}>
-                    My Information
-                </Text>
-            </View>
-
-            <View >
-                <View style={styles.optionsitem}>
-                    <View style={[istyles.subblock, {width: '100%', flexDirection: 'row', justifyContent: 'space-between'}]}>
-                            <Text style={styles.settingsitem}>
-                                Name
-                            </Text>
-                            <Text style={[styles.infotext, {textTransform: 'capitalize'}]}>
-                                
-                            </Text>
-                    </View>
-                </View>
-            </View>
-
-            <View >
-                <View style={styles.optionsitem}>
-                    <View style={[istyles.subblock, {width: '100%', flexDirection: 'row', justifyContent: 'space-between'}]}>
-                            <Text style={styles.settingsitem}>
-                                System
-                            </Text>
-                            <Text style={styles.infotext}>
-                              
-                            </Text>
-                    </View>
-                </View>
-            </View>
-
-            <View >
-                <View style={styles.optionsitem}>
-                    <View style={[istyles.subblock, {width: '100%', flexDirection: 'row', justifyContent: 'space-between'}]}>
-                            <Text style={styles.settingsitem}>
-                                Hospital
-                            </Text>
-                            <Text style={styles.infotext}>
-                               
-                            </Text>
-                    </View>
-                </View>
-            </View>
-
-            <View >
-                <View style={styles.optionsitem}>
-                    <View style={[istyles.subblock, {width: '100%', flexDirection: 'row', justifyContent: 'space-between'}]}>
-                            <Text style={styles.settingsitem}>
-                                Department
-                            </Text>
-                            <Text style={styles.infotext}>
-                                
-                            </Text>
-                    </View>
-                </View>
-            </View>
-
-            <View >
-                <View style={styles.optionsitem}>
-                    <View style={[istyles.subblock, {width: '100%', flexDirection: 'row', justifyContent: 'space-between'}]}>
-                            <Text style={styles.settingsitem}>
-                                Role
-                            </Text>
-                            <Text style={styles.infotext}>
-                               
-                            </Text>
-                    </View>
-                </View>
-            </View>
-
-     
-
-            <View style={{alignSelf: 'center', backgroundColor: 'black', height: 1, width: Dimensions.get('window').width - 80}}/>
+            <View style={styles.linebreak}/>
             
             <View style={{ marginHorizontal: 20, marginVertical: 20}}>
                 <Text style={styles.paragraph}>
@@ -320,7 +247,7 @@ const Settings = ({navigation} : any) => {
                 <View style={styles.optionsitem}>
                     <View style={istyles.subblock}>
                         <TouchableWithoutFeedback onPress={() => {setModalVisible(true)}}>
-                            <Text style={styles.settingsitem}>
+                            <Text style={styles.subparagraph}>
                                 Sign Out
                             </Text>
                         </TouchableWithoutFeedback>

@@ -1,7 +1,7 @@
 //contains all of the stlying for the drawer
 
 import React, { useEffect, useState, useContext } from 'react';
-import { View, StyleSheet, Text, TouchableWithoutFeedback, Image } from 'react-native';
+import { View, StyleSheet, Text, TouchableWithoutFeedback, Image, Dimensions } from 'react-native';
 import { DrawerContentScrollView, DrawerItem, } from '@react-navigation/drawer';
 
 import useStyles from '../styles';
@@ -43,25 +43,27 @@ export function DrawerContent({navigation} : any) {
         <View style={{ flex:1 , backgroundColor: theme === true ? '#fff' : '#000'}}>
             <DrawerContentScrollView>
                 <View style={{height: 80}}/>
-                <View style={{flexDirection: 'row', alignItems: 'center', marginHorizontal: 20}}>
-                <Image
-                        style={{marginRight: 10, alignSelf: 'center', height: 50, width: 50, borderRadius: 25, overflow: 'hidden'}}
-                        source={{
-                        uri: 'https://reactnative.dev/img/tiny_logo.png',
-                        }}
-                    />
-                    <Text style={[styles.header, {textTransform: 'capitalize', color: theme === true ? '#000' : '#fff'}]}>
-                        {userFirstName + ' ' + userLastName} 
-                    </Text>
-                    <Text style={[styles.header, {textTransform: 'uppercase', color: theme === true ? '#000' : '#fff'}]}>
-                       
-                    </Text>
-                </View>
+                <TouchableWithoutFeedback onPress={() => navigation.navigate('Settings')}>
+                    <View style={{flexDirection: 'row', alignItems: 'center', marginHorizontal: 20, marginVertical: 20}}>
+                        <Image
+                            style={{marginRight: 10, alignSelf: 'center', height: 50, width: 50, borderRadius: 25, overflow: 'hidden'}}
+                            source={{
+                            uri: 'https://reactnative.dev/img/tiny_logo.png',
+                            }}
+                        />
+                        <Text style={[styles.header, {textTransform: 'capitalize', color: theme === true ? '#000' : '#fff'}]}>
+                            {userFirstName + ' ' + userLastName} 
+                        </Text>
+                        <Text style={[styles.header, {textTransform: 'uppercase', color: theme === true ? '#000' : '#fff'}]}>
+                        
+                        </Text>
+                    </View>
+                </TouchableWithoutFeedback>
 
-                <View style={{backgroundColor: theme === true ? '#000' : '#fff', height: 1, marginTop: 10, marginHorizontal: 20}}/>
+                <View style={[styles.linebreak, {width: Dimensions.get('window').width - 120}]}/>
 
                 <View style={{marginTop: 10}}>
-                    <TouchableWithoutFeedback onPress={() => navigation.navigate('MyShifts')}>
+                    <TouchableWithoutFeedback onPress={() => navigation.navigate('Root')}>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
                                 <View style={istyles.box}>
                                     <FontAwesome5 
@@ -75,6 +77,21 @@ export function DrawerContent({navigation} : any) {
                                 </View>
                             </View>
                         </TouchableWithoutFeedback>
+
+                        <TouchableWithoutFeedback onPress={() => navigation.navigate('TradeApprovalRequests', {trigger: Math.random()})}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
+                            <View style={istyles.box}>
+                                <FontAwesome 
+                                    name='info-circle'
+                                    color='gray'
+                                    size={20}
+                                />
+                                <Text style={[styles.itemtext]}>
+                                    About
+                                </Text>
+                            </View>
+                        </View>
+                    </TouchableWithoutFeedback>
 
                         <TouchableWithoutFeedback onPress={() => navigation.navigate('PostedShifts')}>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
@@ -106,20 +123,7 @@ export function DrawerContent({navigation} : any) {
                             </View>
                         </TouchableWithoutFeedback>
 
-                        <TouchableWithoutFeedback onPress={() => navigation.navigate('PostedShifts')}>
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
-                                <View style={istyles.box}>
-                                    <FontAwesome 
-                                        name='ticket'
-                                        color='gray'
-                                        size={20}
-                                    />
-                                    <Text style={[styles.itemtext]}>
-                                        Event Info
-                                    </Text>
-                                </View>
-                            </View>
-                        </TouchableWithoutFeedback>
+                   
                         
                         <TouchableWithoutFeedback onPress={() => navigation.navigate('CreateTrade')}>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
@@ -166,20 +170,7 @@ export function DrawerContent({navigation} : any) {
                             </View>
                         </TouchableWithoutFeedback>
 
-                <TouchableWithoutFeedback onPress={() => navigation.navigate('TradeApprovalRequests', {trigger: Math.random()})}>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
-                        <View style={istyles.box}>
-                            <FontAwesome 
-                                name='info-circle'
-                                color='gray'
-                                size={20}
-                            />
-                            <Text style={[styles.itemtext]}>
-                                About
-                            </Text>
-                        </View>
-                    </View>
-                </TouchableWithoutFeedback>
+               
 
             <TouchableWithoutFeedback onPress={() => navigation.navigate('TradeApprovalRequests', {trigger: Math.random()})}>
                     <View style={{}}>
@@ -206,21 +197,6 @@ export function DrawerContent({navigation} : any) {
                             />
                             <Text style={[styles.itemtext]}>
                                 Support
-                            </Text>
-                        </View>
-                    </View>
-                </TouchableWithoutFeedback>
-
-                <TouchableWithoutFeedback onPress={() => navigation.navigate('Settings')}>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 20}}>
-                        <View style={istyles.box}>
-                            <FontAwesome 
-                                name='gear'
-                                color='gray'
-                                size={20}
-                            />
-                            <Text style={[styles.itemtext]}>
-                                Settings
                             </Text>
                         </View>
                     </View>

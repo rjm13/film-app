@@ -37,6 +37,10 @@ return StyleSheet.create ({
       fontSize: 14,
       color: theme === false ? '#fff' : '#000',
     },
+    subparagraph: {
+      fontSize: 16,
+      color: theme === false ? '#fff' : '#000',
+    },
     subtext: {
       fontSize: 12,
       fontWeight: '600',
@@ -48,7 +52,7 @@ return StyleSheet.create ({
       color: theme === false ? '#fff' : '#000',
       textAlign: 'left',
       width: 100
-    },
+    }, //this is the drawer items
     textInputTitle: {
       color: theme === false ? '#000' : '#fff',
       fontWeight: 'normal',
@@ -68,7 +72,7 @@ return StyleSheet.create ({
       fontWeight: '600'
     },
     buttonlayout: {
-        backgroundColor: 'maroon',
+        backgroundColor: '#187D46',
         borderRadius: 20,
         paddingVertical: 10,
         paddingHorizontal: 30,
@@ -87,15 +91,12 @@ return StyleSheet.create ({
       marginRight: 40,
       marginBottom: 30,
   },
-  timeselect: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: theme === true ? '#fff' : '#000'
-  },
-  settingsitem: {
-    fontSize: 16,
-    color: theme === true ? '#fff' : '#000',
-  },
+  linebreak: {
+    alignSelf: 'center', 
+    backgroundColor: theme === false ? '#fff' : '#000', 
+    height: 1, 
+    width: Dimensions.get('window').width - 80
+  }
 });
 }
 
